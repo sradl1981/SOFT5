@@ -111,7 +111,7 @@ The installation path can be configured through CMake by running
     cmake -DCMAKE_INSTALL_PREFIX=<path/to/install/to>  -D<other options> ~/soft5
 
 "path/to/install/to":
-This may be `/usr/local/soft5` for Linux systems, and in case the user wishes to make soft5/porto 
+This may be `/usr/local/` for Linux systems, and in case the user wishes to make soft5/porto 
 available for all users.
 
 "Other options" may include (these are also the three recommended ones!):
@@ -210,7 +210,9 @@ Let us assume we have used as "CMAKE_INSTALL_PREFIX" the directory '/usr/local'.
 your .bashrc file should look as follows:
 
 export SOFTBASE=/usr/local/lib64/soft5
+
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$NANOSIM/lib64:$SOFTBASE/storage:$SOFTBASE/plugins:$HOME/NanoSim/build-soft5/usr/lib64/
+
 export PATH=$PATH:/usr/local/bin # Should already be in path!
 
 ## Testing
@@ -220,7 +222,11 @@ Assuming that the build has succeeded it is recommended to run the unit tests to
 For testing purposes, the system requires additional dependencies:
 
 * Google Test 1.7 (https://github.com/google/googletest/). For gtest installation, see for example (http://stackoverflow.com/questions/13513905/how-to-setup-googletest-as-a-shared-library-on-linux) or use the system package installer if available.
-* MongoDB must be running locally.
+* MongoDB must be installed and running locally.
+
+IMPORTANT NOTE: Ensure mongodb is running BEFORE you start the tests since test tools! In the most primitive case, 
+simply do a 'sudo mongod > log.mongoRun'. For an introduction to MongoDB, please [SEE THIS LINK](https://docs.mongodb.com/manual/introduction)
+
 
 Testing can then be done by:
 
